@@ -45,3 +45,8 @@ p {
  float: left;
  width: 45%;
 }
+
+#column1 {
+  float: center;
+  width: 33%;
+}
