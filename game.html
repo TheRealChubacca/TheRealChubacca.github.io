@@ -1,0 +1,120 @@
+
+
+
+<!DOCTYPE HTML
+<HTML>
+   <HEAD>
+      <TITLE>Home</TITLE>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </HEAD>
+   <BODY id="main">
+      <div class="navbar">
+         <a class="active" href="index.html">Home</a>
+         <a href="about.html">About</a>
+         <a href="game.html">Game</a>
+      </div>
+
+
+      <!-- This is the Game -->
+
+      <div class="row" id="emojibox">
+
+        <div class="column" id="human">
+          <p style="font-size:100px" id="humanhand">&#128104</p>
+          <h1>You</h1>
+          <h4 id="humanScore">Score:</h4>
+        </div>
+
+
+        <div class="column" id="computerbox">
+          <div id="human">
+            <p style="font-size:100px" id="computerhand">&#128187</p>
+            <h1>Computer</h1>
+            <h4 id="computerScore" >Score:</h4>
+          </div>
+        </div>
+
+      </div>     
+
+      <div class="row" id="line">  </div>   
+
+        <div class="row">
+          <div class="column">
+           <div id="inputbox">
+             <button id="choicebutton" onclick="play(2)">&#9994</button>
+             <button id="choicebutton" onclick="play(3)">&#9995</button>
+             <button id="choicebutton" onclick="play(1)">&#9996</button>
+           </div>
+          </div>
+
+          <div class="column">
+            <div id="startbox">
+              <button id="startbutton" onclick="start()">START</button>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+<script>
+        let humanScore = 0;
+        let computerScore = 0;
+        let humanhand = 0;
+        let computerhand = 0;
+        function start() {
+            alert("积分清零，游戏开始！");
+            humanScore = 0;
+            computerScore = 0;
+            refreshUI();
+        }
+        function play(playerhand) {
+            // 首先，我们需要随机产生computerHand,
+            // 这里调用了浏览器提供的方法，这样会随机产生1, 2, 3三个数字
+            computerhand = Math.ceil(Math.random() * 3);
+            humanhand = playerhand;
+            // 这里我们开始判断输赢，
+            // 注意 1 -> scissor  2 -> rock   3-> paper
+            if( humanhand - computerhand === 1 || humanhand - computerhand === -2 ) {
+                // 选手赢！分数加1
+                humanScore ++;
+            } else if(computerhand - humanhand === 1 || computerhand - humanhand === -2) {
+                // 计算机赢!分数加1
+                computerScore ++;
+            }
+            // 别忘记了最后需要刷新界面！
+            refreshUI();
+        }
+        function refreshUI() {
+            document.getElementById("humanScore").innerText = "Score: " + humanScore;
+            document.getElementById("computerScore").innerText = "Score: " + computerScore;
+            let pictureName = "img/&#128104";
+            if(humanhand === 1) {
+                pictureName = "&#9996";
+            } else if(humanhand === 2) {
+                pictureName = "&#9994";
+            } else if(humanhand === 3) {
+                pictureName = "&#9995";
+            }
+            document.getElementById("humanHand").setAttribute("src", pictureName);
+            pictureName = "img/&#128187";
+            if(computerhand === 1) {
+                pictureName = "&#9996";
+            } else if(computerhand === 2) {
+                pictureName = "&#9994";
+            } else if(computerhand === 3) {
+                pictureName = "&#9995";
+            }
+            document.getElementById("computerhand").setAttribute("src", pictureName);
+        }
+    </script>
+
+
+
+    <script src="script.js"></script>
+   </BODY>
+</HTML>
