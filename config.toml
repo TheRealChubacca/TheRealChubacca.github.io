@@ -1,0 +1,4 @@
+baseURL = "therealchubacca.github.io"
+languageCode = "en-uk"
+title = "Epic Blog"
+theme = "toha-master"
