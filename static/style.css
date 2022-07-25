@@ -1,0 +1,15 @@
+
+@font-face {
+    font-family: "Pinyon Script";
+    src: url(/static/PinyonScript-Regular.ttf);
+}
+
+h1 {
+    text-align:center;
+    color:bisque;
+    font-family: 'Pinyon Script';
+}
+
+body {
+    color: black;
+}
